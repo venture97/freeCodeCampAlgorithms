@@ -1,0 +1,31 @@
+function whatIsInAName(collection, source) {
+
+  var sourceKeys = Object.keys(source);
+  var arr = [];
+  
+  for (var i = 0; i < collection.length; i++) {
+    var count = 0;
+    var obj = collection[i];
+    var objKeys = Object.keys(obj);
+    
+    for (var j = 0; j < sourceKeys.length; j++) {
+      var sourceKey = sourceKeys[j];
+     
+      var match = obj[sourceKey] == source[sourceKey];
+      
+      if (match) {
+        count++;
+        if (count == sourceKeys.length) {
+          arr.push(obj);
+        }
+      }
+    }  
+  }
+  
+  
+  return arr;
+}
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+// should return [{first: "Tybalt", last: "Capulet"}]
